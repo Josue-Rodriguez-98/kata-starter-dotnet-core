@@ -4,8 +4,12 @@ namespace Kata
     {
         public int Add(string number="")
         {
-            
-            return 0;
+            if (string.IsNullOrEmpty(number))
+            {
+                return 0;                
+            }
+
+            return int.Parse(number);
         }
     }
 }
