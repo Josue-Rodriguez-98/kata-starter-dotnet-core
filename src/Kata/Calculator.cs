@@ -21,6 +21,11 @@ namespace Kata
                 content = parts[1];
                 delimiters = new[] {customDelimiter};
             }
+
+            if (content.Contains("-"))
+            {
+                throw new Exception("negatives not allowed: -2");
+            }
             
             var myArray = content.Split(delimiters,StringSplitOptions.None).Select(int.Parse);
             return myArray.Sum();
