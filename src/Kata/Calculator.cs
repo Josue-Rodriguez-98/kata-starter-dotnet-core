@@ -13,7 +13,16 @@ namespace Kata
             }
 
             var delimiters = new string[]{",", "\n"};
-            var myArray = number.Split(delimiters,StringSplitOptions.None).Select(int.Parse);
+            var content = number;
+            if (number.StartsWith("//"))
+            {
+                var parts = number.Split("\n");
+                var customDelimiter = parts[0].Replace("//", "");
+                content = parts[1];
+                delimiters = new[] {customDelimiter};
+            }
+            
+            var myArray = content.Split(delimiters,StringSplitOptions.None).Select(int.Parse);
             return myArray.Sum();
         }
     }
